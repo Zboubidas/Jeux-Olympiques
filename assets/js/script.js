@@ -5,17 +5,47 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-map.setView([35, 35], 2)
+map.setView([48.863761583029394, 2.34735791870776], 1)
 
-var marker = L.marker([51.5, -0.09]).addTo(map);
+// let myIcon = L.icon({
+//     iconUrl: 'airplan.png',
+//     iconSize: [38, 95]
+// });
 
-// 48.863761583029394, 2.3473579187077673
+let icon = L.icon({iconUrl: 'assets/img/group 1.svg', iconSize: [80, 80]})
 
-var circle = L.circle([48.863761583029394, 2.34735791870776], {
-    color: 'blue',
-    fillColor: 'blue',
-    fillOpacity: 0.5,
-    radius: 5000
-}).addTo(map);
 
-circle.bindPopup('bonswaarrr pariiiiis')
+
+let trocadero = L.marker([48.86221786472036, 2.2881789193394355], {icon:icon}).addTo(map);
+trocadero.bindPopup('Trocadero')
+
+let chateauroux = L.marker([46.83826807854533, 1.6759953869880373], {icon:icon}).addTo(map);
+chateauroux.bindPopup('Châteauroux')
+
+let stadeDeFrance = L.marker([48.92458786188343, 2.3601497975306898], {icon:icon}).addTo(map);
+stadeDeFrance.bindPopup('Stade de France')
+
+let stadeTourEiffel = L.marker([48.8559659293032, 2.2978320261429452], {icon:icon}).addTo(map);
+stadeTourEiffel.bindPopup('stade Tour Eiffel')
+
+let arenaChampDeMars = L.marker([48.85284420490173, 2.303036183245992], {icon:icon}).addTo(map);
+arenaChampDeMars.bindPopup('Arena Champ De Mars')
+
+let parisDefenseArena = L.marker([48.89573971479303, 2.2294563684830515], {icon:icon}).addTo(map);
+parisDefenseArena.bindPopup('Paris La Défense Arena')
+
+let tahiti = L.marker([-17.845587734823845, -149.25896128026113], {icon:icon}).addTo(map);
+tahiti.bindPopup("Teahupo'o, Tahiti")
+
+
+
+// var circle = L.circle([48.863761583029394, 2.34735791870776], {
+//     color: 'blue',
+//     fillColor: 'blue',
+//     fillOpacity: 0.5,
+//     radius: 5000
+// }).addTo(map);
+
+trocadero.on("click", () => {
+    console.log('yo');
+})
