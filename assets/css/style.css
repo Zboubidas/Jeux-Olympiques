@@ -80,13 +80,6 @@ footer div {
     width: 50rem;
 }
 
-.leaflet-layer,
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out,
-.leaflet-control-attribution {
-    filter: invert(100%) hue-rotate(900deg) brightness(95%) contrast(90%);
-}
-
 /* MEDIA QUERIE */
 
 @media (max-width: 550px) {
