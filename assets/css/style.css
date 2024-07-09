@@ -181,7 +181,8 @@ footer div {
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
 .leaflet-control-attribution {
-    filter: invert(100%) hue-rotate(900deg) brightness(95%) contrast(90%);
+
+    filter: invert(90%) hue-rotate(180deg) brightness(100%) contrast(90%);
 }
 
 /* MEDIA QUERIE */
@@ -268,4 +269,5 @@ footer div {
 }
 
 /* MEDIA QUERIE */
+
 
