@@ -1,4 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1 {
+    width: 80%;
+    text-align: center;
+    background: -webkit-linear-gradient(60deg, #C59FFE, #F47797);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header>div {
+    padding-left: 1rem;
+    width: 10%;
+    display: flex;
+}
+
+/* HEADER */
+
+/* MAIN */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN */
+
+/* FOOTER */
+
+footer {
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(60deg, #8F4356, #6D5590);
+}
+
+.joLogo {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-weight: lighter;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+}
+
+footer div {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* FOOTER */
+
 #mymap {
     height: 30rem;
     width: 50rem;
 }
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+    filter: invert(100%) hue-rotate(900deg) brightness(95%) contrast(90%);
+}
+
+/* MEDIA QUERIE */
+
+@media (max-width: 550px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    header div img {
+        height: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+}
+
+/* MEDIA QUERIE */
