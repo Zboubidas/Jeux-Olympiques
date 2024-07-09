@@ -10,6 +10,7 @@
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <title>Jeux Olympiques</title>
 </head>
 
@@ -21,8 +22,18 @@
         <h1>Jeux Olympiques</h1>
         <div></div>
     </header>
-    <main>
-    <div id="mymap"></div>
+    
+  <main>
+        <div class="containerLeft"><img src="/assets/img/olympics-torch-svgrepo-com 1.svg" alt="">
+            <h2 class="text">Jeux Olympiques</h2>
+            <h2 class="textShadow">Jeux Olympiques</h2>
+            <h2 class="year">2024</h2>
+        </div>
+        <div id="containerRight" class="containerRight">
+            <div id="searchButton" class="searchButton"><ion-icon name="search-outline"></ion-icon></div>
+            <div id="mymap"></div>
+        </div>
+        <div id="card" class="card"></div>
     </main>
 
     <footer>
@@ -38,7 +49,10 @@
 
 
 
+
     <script src="./assets/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
