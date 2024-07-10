@@ -1,4 +1,7 @@
+//import a data for another sheet 'data.js'
+import { datajo, dataShops } from './data.js';
 
+//data copy pasted from leatlet site for display a map into site
 var map = L.map('mymap');
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -6,86 +9,104 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-
-map.setView([48.863761583029394, 2.34735791870776], 1)
-
-// let myIcon = L.icon({
-//     iconUrl: 'airplan.png',
-//     iconSize: [38, 95]
-// });
-
 map.setView([48.863761583029394, 2.34735791870776], 10)
+let icon = L.icon({ iconUrl: 'assets/img/ping2.svg', iconSize: [80, 80] })
 
-var marker = L.marker([48.863761583029394, 2.34735791870776]).addTo(map);
+//functonality search button open and close
+const card = document.getElementById('card');
+const containerRight = document.getElementById('containerRight');
 
-
-let icon = L.icon({iconUrl: 'assets/img/group 1.svg', iconSize: [80, 80]})
-
-
-
-
-let trocadero = L.marker([48.86221786472036, 2.2881789193394355], {icon:icon}).addTo(map);
-trocadero.bindPopup('Trocadero')
-
-let chateauroux = L.marker([46.83826807854533, 1.6759953869880373], {icon:icon}).addTo(map);
-chateauroux.bindPopup('Châteauroux')
-
-let stadeDeFrance = L.marker([48.92458786188343, 2.3601497975306898], {icon:icon}).addTo(map);
-stadeDeFrance.bindPopup('Stade de France')
-
-let stadeTourEiffel = L.marker([48.8559659293032, 2.2978320261429452], {icon:icon}).addTo(map);
-stadeTourEiffel.bindPopup('stade Tour Eiffel')
-
-let arenaChampDeMars = L.marker([48.85284420490173, 2.303036183245992], {icon:icon}).addTo(map);
-arenaChampDeMars.bindPopup('Arena Champ De Mars')
-
-let parisDefenseArena = L.marker([48.89573971479303, 2.2294563684830515], {icon:icon}).addTo(map);
-parisDefenseArena.bindPopup('Paris La Défense Arena')
-
-let tahiti = L.marker([-17.845587734823845, -149.25896128026113], {icon:icon}).addTo(map);
-tahiti.bindPopup("Teahupo'o, Tahiti")
-
-
-
-// var circle = L.circle([48.863761583029394, 2.34735791870776], {
-//     color: 'blue',
-//     fillColor: 'blue',
-//     fillOpacity: 0.5,
-//     radius: 5000
-// }).addTo(map);
-
-trocadero.on("click", () => {
-    console.log('yo');
-
-var circle = L.circle([48.863761583029394, 2.34735791870776], {
-    color: 'red',
-    fillColor: 'red',
-    fillOpacity: 0.5,
-    radius: 5000
-}).addTo(map);
-
-circle.bindPopup('bonswaarrr pariiiiis')
-
-
-//functonality search button
-
+//function open and close a search button //and there is two search button one for pc and opne for mobile
+const searchButtonMobile = document.getElementById('searchButtonMobile');
 const searchButton = document.getElementById('searchButton');
-searchButton.addEventListener('click', () => {
-    const card = document.getElementById('card');
-    const containerRight = document.getElementById('containerRight');
+const toggleCardAndContainer = () => {
     card.classList.toggle('cardActive');
     containerRight.classList.toggle('containerRightActive');
+    containerRight.classList.remove('containerRightActiveFull');
+    reloadMap();
+};
+
+searchButtonMobile.addEventListener('click', toggleCardAndContainer);
+searchButton.addEventListener('click', toggleCardAndContainer);
 
 
+//functonality of closebutton to close the card
+const closeButton = document.getElementById('closeButton');
+closeButton.addEventListener('click', () => {
+    card.classList.remove('cardActive');
+    containerRight.classList.remove('containerRightActive');
+    reloadMap();
+});
+
+//functonality of full viwe and partial viwe map
+const mapPane = document.getElementsByClassName('leaflet-map-pane');
+const fullMap = document.getElementById('fullMap');
+fullMap.addEventListener('click', () => {
+    containerRight.classList.toggle('containerRightActiveFull');
+    reloadMap();
+})
+//loop for fecth information from table of datajo
+for (let i = 0; i < datajo.length; i++) {
+    var popup = L.marker([datajo[i].lat, datajo[i].long], { icon: icon }).addTo(map);
+    popup.bindPopup(datajo[i].nom_site);
+    popup.addEventListener('click', () => {
+        openCard()
+        displayCard(i);
+    });
+}
+//function for display a information about clicked posistion
+const displayCard = (i) => {
+
+    const infoLocation = document.createElement('div');
+    infoLocation.classList.add('allSearch');
+
+    card.appendChild(infoLocation);
+
+    const sportImg = document.createElement('div');
+    sportImg.classList.add('sportImg');
+    sportImg.innerHTML = `<img src="/assets/img/sports/${datajo[i].img}.png" alt="sportImage">`
+    infoLocation.appendChild(sportImg);
+
+    const infos = document.createElement('div');
+    infos.classList.add('infos');
+    infoLocation.appendChild(infos);
+
+    const sportName = document.createElement('div');
+    sportName.classList.add('sportName');
+    sportName.innerHTML = `${datajo[i].sports}`
+    infos.appendChild(sportName);
+
+    const sportPlace = document.createElement('div');
+    sportPlace.classList.add('sportPlace');
+    sportPlace.innerHTML = `${datajo[i].nom_site}`
+    infos.appendChild(sportPlace);
+
+    const locationTime = document.createElement('div');
+    locationTime.classList.add('locationTime');
+    locationTime.innerHTML = `${datajo[i].start_date}`
+    infos.appendChild(locationTime);
+
+};
+//function for open a information and search area card
+const openCard = () => {
+    card.classList.add('cardActive');
+    containerRight.classList.add('containerRightActive');
+    containerRight.classList.remove('containerRightActiveFull');
     setTimeout(function () {
-        const mapPane = document.getElementsByClassName('leaflet-map-pane');
         mapPane[0].classList.add('inmove')
         map.invalidateSize();
-
         setTimeout(function () {
             mapPane[0].classList.remove('inmove')
         }, 300);
     }, 300);
-    // mymap.
-
-})
+}
+//function for reload a map after change a size of map to full viwe of map
+const reloadMap = () =>{
+    setTimeout(() => {
+        mapPane[0].classList.add('inmove');
+        map.invalidateSize();
+        setTimeout(() => {
+            mapPane[0].classList.remove('inmove');
+        }, 300);
+    }, 300);
+}
