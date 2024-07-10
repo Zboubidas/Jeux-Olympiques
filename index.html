@@ -23,38 +23,45 @@
         <h1>Jeux Olympiques</h1>
         <div></div>
     </header>
-    
-  <main>
-        <div class="containerLeft"><img src="/assets/img/olympics-torch-svgrepo-com 1.svg" alt="">
-            <h2 class="text">Jeux Olympiques</h2>
-            <h2 class="textShadow">Jeux Olympiques</h2>
-            <h2 class="year">2024</h2>
+
+    <main>
+        <div class="mainContainer">
+            <div class="containerLeft"><img src="/assets/img/olympics-torch-svgrepo-com 1.svg" alt="">
+                <h2 class="text">Jeux Olympiques</h2>
+                <h2 class="textShadow">Jeux Olympiques</h2>
+                <h2 class="year">2024</h2>
+            </div>
+            <div id="containerRight" class="containerRight">
+                <div id="searchButton" class="searchButton"><ion-icon name="search-outline"></ion-icon></div>
+                <div id="searchButtonMobile" class="searchButtonMobile"><ion-icon name="search-outline"></ion-icon></div>
+                <div id="fullMap" class="fullMap"><ion-icon name="open-outline"></ion-icon></div>
+                <div id="mymap"></div>
+            </div>
+            <div id="card" class="card">
+                <div class="research">
+                    <input type="text" placeholder="Recherche..">
+                    <div class="iconBtn">
+                        <div><ion-icon name="search-outline"></ion-icon></div>
+                        <button id="closeButton"><ion-icon name="close-outline"></ion-icon></button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="containerRight" class="containerRight">
-            <div id="searchButton" class="searchButton"><ion-icon name="search-outline"></ion-icon></div>
-            <div id="mymap"></div>
-        </div>
-        <div id="card" class="card"></div>
+        <div class="olympiquesLogo"><img src="/assets/img/olympiquesLogo.svg" alt="olympiquesLogo"></div>
     </main>
 
     <footer>
-        <div>
-            <img src="assets/img/torche.svg" alt="Torche Olympique">
-        </div>
-        <div class="joLogo">
-            <h2>Jeux Olympiques</h2>
-            <img src="assets/img/olympiquesLogo.svg" alt="Logo jeux olympiques">
-        </div>
-        <div></div>
+        <img src="assets/img/torche.svg" alt="Torche Olympique">
+        <h2>Jeux Olympiques</h2>
+        <img class="logoFooter" src="assets/img/olympiquesLogo.svg" alt="Logo jeux olympiques">
     </footer>
 
 
 
 
 
-    <script src="./assets/js/script.js"></script>
+    <script type="module" src="./assets/js/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
